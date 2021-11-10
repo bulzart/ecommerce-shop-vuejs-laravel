@@ -6,6 +6,9 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "barryvdh/laravel-dompdf": "^0.9.0",
+        "calebporzio/livewire": "^2.7",
+        "dompdf/dompdf": "^1.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -13,8 +16,10 @@
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
-        "livewire/livewire": "^2.4",
-        "nesbot/carbon": "^2.48"
+        "livewire/livewire": "^2.7",
+        "nesbot/carbon": "^2.48",
+        "paypal/paypal-checkout-sdk": "^1.0",
+        "stripe/stripe-php": "^7.100"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

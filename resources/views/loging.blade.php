@@ -44,9 +44,10 @@
                           
                             <div class="form-group">
                                
-                                <input type="submit" name="submit" class="btn btn-info btn-md" value="Submit">
+                                <input type="submit" name="submit" class="btn btn-info btn-md" value="Log in">
                             </div>
                         </form>
+                        <a href="{{route('signup')}}"><span style="font-size: 18px;">Sign up!</span></a>
                     </div>
                 </div>
             </div>

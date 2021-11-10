@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.shpalljet')
 
 @section('content')
 <div class="container">
@@ -13,7 +13,7 @@
 <li class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
       <div class="fw-bold">{{$prod->emri}}</div>
-      {{$prod->ngjyra}} , {{$prod->cmimi}} {{$curr->currency}}
+      {{$prod->ngjyra}} , {{$prod->cmimi}} {{$curr}}
     </div>
     <span class="badge bg-primary rounded-pill mr-2 mt-3">{{$prod->sasia}} </span><br>
     <div style="margin-top: 12px;">
@@ -24,7 +24,7 @@
 <li class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
       <div class="fw-bold">{{$prod['emri']}}</div>
-      {{$prod['ngjyra']}} , {{$prod['cmimi']}} {{$curr->currency}}
+      {{$prod['ngjyra']}} , {{$prod['cmimi']}} {{$curr}}
     </div>
     <span class="badge bg-primary rounded-pill mr-2 mt-3">{{$prod['sasia']}} </span><br>
     <div style="margin-top: 12px;">
@@ -38,8 +38,12 @@
 
 <br>
 <div class="text-center">
-<form action="{{route('porosit')}}" action="POST">
-{{csrf_field()}}
+<form
+                     
+                        action="{{ route('porosit') }}"
+                        method="post"
+                        >
+                        @csrf
 <div class="row">
   <div class="mb-2 col-6">
     <label class="form-label">Name and surname</label>
@@ -57,11 +61,15 @@
     <label class="form-label">Address</label>
     <input type="text" class="form-control"  name="adresa">
   </div>
-  <div class="mb-2 col-12">
-    <label class="form-label">Wanna leave a message on your order?</label>
-    <textarea name="mesazh" class="form-control" ></textarea>
+  <div class="mb-2 col-6">
+    <label class="form-label">Zip code</label>
+    <input type="text" class="form-control"  name="zip">
   </div>
-  <input type="submit" class="form-control btn-secondary">
+  <div class="mb-2 col-6">
+    <label class="form-label">Email</label>
+    <input type="text" class="form-control"  name="email">
+  </div>
+  <input type="submit" value="Submit" class="btn btn-success">
   </div>
   </div>
 </form>

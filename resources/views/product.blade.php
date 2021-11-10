@@ -1,14 +1,3 @@
-@if(Auth::guard('perdoruesit')->check())
-@php
-    if(isset(App\Models\Cart::where('perdoruesi_id',Auth::guard('perdoruesit')->user()->id)->first()->sasia))
-    {
-      $sasia = App\Models\Cart::where('perdoruesi_id',Auth::guard('perdoruesit')->user()->id)->first()->sasia;
-    }
-    else{
-      $sasia = 0;
-    }
-@endphp
-@endif
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,10 +9,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{{config('app.name')}}</title>
+    <title>Electronic - eCommerce</title>
     <meta name="keywords" content="HTML5 Template">
     <meta name="author" content="p-themes">
     <!-- Favicon -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="icon" type="image/png" sizes="32x32" href="images/32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/16.png">
     <link rel="manifest" href="assets/images/icons/site.html">
@@ -39,10 +29,9 @@
     <link rel="stylesheet" href="assets/css/plugins/magnific-popup/magnific-popup.css">
     <!-- Main CSS File -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/plugins/nouislider/nouislider.css">
-	    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/skins/skin-demo-10.css">
-    <link rel="stylesheet" href="assets/css/demos/demo-10.css">
+    <style>
+
+        </style>
 </head>
 
 <body>
@@ -58,18 +47,18 @@
 
                     <div class="header-left">
                         <button class="mobile-menu-toggler">
-                            
-                           
+                            <span class="sr-only">Toggle mobile menu</span>
+                            <i class="icon-bars"></i>
                         </button>
 
                         <a href="{{route('home')}}" class="logo">
-                            <img src="images/smartphonelogoo.png" alt=" width="105" height="25">
+                            <img src="images/ejlogo.png"  width="92" height="92">
                         </a>
 
-                        <nav>
-                            <ul>
-                                <li style="margin-left: 38px; margin-top: 15px;" class="">
-                                    <a href="{{route('home')}}" style="font-size: 20px;">Home</a>
+                        <nav class="main-nav">
+                            <ul class="menu">
+                                <li class="megamenu-container active">
+                                    <a href="index.html" class="">Home</a>
 
                                     
                                 </li>
@@ -95,7 +84,7 @@
                     <div class="dropdown cart-dropdown">
                             <a href="{{route('shporta')}}" class="dropdown-toggle" >
                                 <i class="icon-shopping-cart"></i>
-                                <span class="cart-count">@if(Auth::guard('perdoruesit')->check()) {{$sasia}} @endif @if(!Auth::guard('perdoruesit')->check()) @if(Session::get('sasia') != 0) {{\Session::get('sasia')}} @else 0 @endif @endif</span>
+                                <span class="cart-count">@if(!empty($cart)){{$cart}}@else 0 @endif</span>
                             
 							</a>
 
@@ -118,7 +107,7 @@
                 <div class="container">
                     <div class="product-details-top">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-7 mb-3">
                                 <div class="product-gallery product-gallery-vertical">
                                     <div class="row">
                                         <figure class="product-main-image">
@@ -135,7 +124,7 @@
                                               <img src="{{$upload->path}}">
 												</a>
 												@foreach($images as $img)
-												 <a class="product-gallery-item" href="#"  data-image="{{$img->url}}" style="outline:none;" data-zoom-image="{{$img->url}}">
+												 <a class="product-gallery-item" href="#"  data-image="{{$img->url}}" style="outline:none; height: 4px;" data-zoom-image="{{$img->url}}">
                                                 <img src="{{$img->url}}" style="margin-top: auto;">
                                             </a>
 @endforeach                           
@@ -144,82 +133,32 @@
                                 </div><!-- End .product-gallery -->
                             </div><!-- End .col-md-6 -->
 
-                            <div class="col-md-6 pt-7">
-                                <div class="product-details">
-                                    <h1 class="product-title">{{$upload->emri}}</h1><!-- End .product-title -->
-
-                                 <!-- End .rating-container -->
-
-                                    <div class="product-price">
-									{{$upload->cmimi}} {{$curr->currency}}
-                                    </div><!-- End .product-price -->
-
-                                    <div class="product-details-action">
-                                        <a href="{{route('shto',$upload->id)}}" class="btn-product btn-cart"><span>add to cart</span></a>
+                            <div class="col-md-5 pt-7 bg-light text-center">
+                            <div class="product-details-action d-flex justify-content-center text-center">
+                               <b><span style="font-size: 18px; margin-right: 3px;">Price:{{$upload->cmimi}}{{$curr->currency}}</span></b>
+                                        <a href="{{route('shto',$upload->id)}}" class="btn-product btn-cart"><span>add to cart</span></a></div>
+                            <span style="font-size: 20px;">&nbsp;&nbsp;&nbsp;<i class="fas fa-check text-success"></i> Immediate order and immediate delivery </span><p> No minimum purchase or order requirements</p>
+                            <span style="font-size: 20px;">&nbsp;&nbsp;&nbsp;<i class="fas fa-check text-success"></i> Live chat support </span><p> during office hours and email response within 24 hours</p>
+                            <span style="font-size: 20px;">&nbsp;&nbsp;&nbsp;<i class="fas fa-check text-success"></i> Order without being a user </span>
+                           
 
                                       <!-- End .details-action-wrapper -->
                                     </div>
-<div class="row">
-<div class="col-6">
-                                    <div class="details-filter-row details-row-size">
-                                        <label>Color</label><span>{{$upload->ngjyra}}</span>
-
-                                       <!-- End .product-nav -->
-                                    </div><!-- End .details-filter-row -->
-
-                                    <div class="details-filter-row details-row-size">
-                                        <label for="size">Disk size</label><span>{{$upload->disk}}
-                                     <!-- End .select-custom -->
-
-                                       
-                                    </div><!-- End .details-filter-row -->
-									  <div class="details-filter-row details-row-size">
-                                        <label for="size">Screen</label><span>{{$upload->size}} inch
-
+                            </div>
+                            <!-- End .col-md-6 -->
+                            <div class="col-md-12 pt-7 text-center">
+                            <div class="product-content row">
+                                <div class="col-md-6 col-sm-6 col-lg-6 col-12 col-xs-6">
+                                        <p>@if($upload->pershkrimi != null){{$upload->pershkrimi}} @else This product has no description !@endif </p>
+                                      
                                     </div>
-									  <div class="details-filter-row details-row-size">
-                                        <label for="size">Battery</label><span>{{$upload->battery}}
-
-                                    </div>
-</div>
-<div class="col-6">
-                                    <div class="details-filter-row details-row-size">
-                                        <label>CPU</label><span>{{$upload->cpu}}</span>
-
-                                       <!-- End .product-nav -->
-                                    </div><!-- End .details-filter-row -->
-
-                                    <div class="details-filter-row details-row-size">
-                                        <label for="size">RAM</label><span>{{$upload->ram}}
-
-                                    </div><!-- End .details-filter-row -->
-									  <div class="details-filter-row details-row-size">
-                                        <label for="size">Year:</label><span>{{$upload->viti}}
-
-                                    </div>
-									  <div class="details-filter-row details-row-size">
-                                        <label for="size">GPU</label><span>{{$upload->gpu}}
-
-                                    </div>
-                                    </div>
-                                    
-      @if($specs->items != null)
+                                    <div class="col-md-6 col-sm-6 col-lg-6 col-12 col-xs-6 row d-flex justify-content-center">
                                     @foreach($specs->items as $item)
-    <div class="col-6">
-    <div class="details-filter-row details-row-size">
-                                        <p>{{$item}}</p>
-
-                                       <!-- End .product-nav -->
-                                    </div>
+                                        <div class="col-md-6 col-sm-6 col-lg-6 col-12 col-xs-6"><span style="font-size: 17px;">{{$item}}</span><br></div>
+                                        @endforeach
 </div>
-@endforeach
-@endif
-
-                                 </div>
-
-                                 
-                                </div><!-- End .product-details -->
-                            </div><!-- End .col-md-6 -->
+</div>
+                            </div>
                         </div><!-- End .row -->
                     </div><!-- End .product-details-top -->
 
@@ -227,7 +166,7 @@
 
                     <h2 class="title text-center mb-4">You may also like!</h2><!-- End .title text-center -->
 
-                    <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow justify-content-center d-flex" data-toggle="owl" 
+                    <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow d-flex justify-content-center" data-toggle="owl" 
                         data-owl-options='{
                             "nav": false, 
                             "dots": true,
@@ -255,10 +194,11 @@
                         }'>
                     @foreach($related as $rel)
 					@if($rel->id != $upload->id)
-                        <div class="product product-7 text-center">
+					<div class="products">
+                        <div class="product product-7 text-center justify-content-center" id="backlight">
                             <figure class="product-media">
                                 <a href="{{route('shiko',$rel)}}">
-                                    <img src="{{$rel->path}}" alt="Product image" class="product-image">
+                                    <img src="{{$rel->path}}" alt="Product image" class="product-image" id="productimage">
                                 </a>
 
                            
@@ -268,7 +208,7 @@
                                 </div><!-- End .product-action -->
                             </figure><!-- End .product-media -->
 
-                            <div class="product-body">
+                            <div class="product-body" id="backlight">
                                 <div class="product-cat">
                                     
                                 </div><!-- End .product-cat -->
@@ -279,6 +219,7 @@
                            
                             </div><!-- End .product-body -->
                         </div><!-- End .product -->
+                        </div>
 						@endif
 						@endforeach
                     </div><!-- End .owl-carousel -->
@@ -294,9 +235,38 @@
     
 
     <!-- Mobile Menu -->
-    <!-- End .mobil-menu-overlay -->
+    <div class="mobile-menu-overlay"></div><!-- End .mobil-menu-overlay -->
 
-  
+    <div class="mobile-menu-container">
+        <div class="mobile-menu-wrapper">
+            <span class="mobile-menu-close"><i class="icon-close"></i></span>
+
+            <form action="#" method="get" class="mobile-search">
+                <label for="mobile-search" class="sr-only">Search</label>
+                <input type="search" class="form-control" name="mobile-search" id="mobile-search" placeholder="Search in..." required>
+                <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
+            </form>
+            
+            <nav class="mobile-nav">
+                <ul class="mobile-menu">
+                    <li class="active">
+                        <a href="{{route('home')}}">Home</a>
+
+                        
+                    </li>
+                    <li>
+               
+            </nav><!-- End .mobile-nav -->
+
+            <div class="social-icons">
+                <a href="#" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>
+                <a href="#" class="social-icon" target="_blank" title="Twitter"><i class="icon-twitter"></i></a>
+                <a href="#" class="social-icon" target="_blank" title="Instagram"><i class="icon-instagram"></i></a>
+                <a href="#" class="social-icon" target="_blank" title="Youtube"><i class="icon-youtube"></i></a>
+            </div><!-- End .social-icons -->
+        </div><!-- End .mobile-menu-wrapper -->
+    </div><!-- End .mobile-menu-container -->
+
     <!-- Sign in / Register Modal -->
     <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">

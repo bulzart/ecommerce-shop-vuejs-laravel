@@ -1,17 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="csrf-token" content="{{ csrf_token() }}">
 
-<meta charset="UTF-8">
-<link rel="icon" href="images/logo.ico">
-<title>{{config('app.name')}}</title>
-<link rel="stylesheet" href="assets/css/style.css">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
-</head>
-<body>
+@extends('layouts.shpalljet')
+@section('login')
 
+@endsection
+@section('content')
 <br>
 <div class="container">
 @if(\Session::has('success'))
@@ -50,7 +42,7 @@
 <th>Tel</th>
 <th>Time</th>
 <th>Ordered products</th>
-<th>Order message</th>
+<th>Email</th>
 </tr>
 
 @foreach($orders as $order)
@@ -58,7 +50,7 @@
 <td>@if($order->perdoruesi_id != null)<p>@if($order->perdoruesi->name != null){{$order->perdoruesi->name}}@endif</p>@endif</td>
 <td><p>{{$order->emri}}</p></td>
 <td><p>{{$order->shteti}}</p><td>
-<td><p>{{$order->adresa}}</p></td>
+<td><p>{{$order->adresa}} Zip: {{$order->zip}}</p></td>
 <td><p>{{$order->tel}}</p></td>
 <td><p>{{$order->created_at}}</p></td>
 <td>
@@ -101,6 +93,5 @@
 </div>
 @endif
 <br>
-</body>
-</html>
+@endsection
 

@@ -1,8 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.shpalljet')
 @section('login')
 
 @endsection
 @section('content')
+
 <head>
 <link rel="stylesheet" href="assets/css/style.css">
 <title>{{config('app.name')}}</title>
@@ -19,10 +20,7 @@
 </div>
 @endif
 
-<!------ Include the above in your HEAD tag ---------->
-
 <body>
-
     <div id="login">
         <div class="container">
             <div id="login-row" class="row justify-content-center align-items-center">
@@ -47,76 +45,25 @@
                             </div>
                             <div class="form-group">
                             <label class="text-info">Category<span id="red"> *</span></label><br>
-                                <select name="car_models_id" class="form-control">
+                                <select name="model" class="form-control">
                                     @foreach($modelet as $model)
                                     <option value="{{$model->id}}">{{$model->modeli}}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
-                                <div class="row">
-                                <div class="col-md-6 col-xs-12 col-sm-6 col-lg-6 col-xl-6">
-                                <label  class="text-info">Price <span id="red"> *</span></label><br>
-                                <div class="d-inline-flex">
-                                <input type="text" name="price" class="form-control">
-                                </div>
-</div>
-                                <div class="col-md-6 col-xs-12 col-sm-6 col-lg-6 col-xl-6">
-                                <label  class="text-info">Processor(CPU)</label><br>
-                                <div class="d-inline-flex">
-                                <input type="text" name="cpu" placeholder="A13,Octa-core Cortex..." class="form-control">
-                                </div>
-</div>
+                            <label class="text-info">Subcategory<span id="red"> *</span></label><br>
+                                <select name="submodel" class="form-control">
+                                    <option value="">None</option>
+                                    @foreach($cat as $c)
+                                    <option value="{{$c->id}}">{{$c->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
-</div>
                             <div class="form-group">
-                                <div class="row">
-                                <div class="col-md-6 col-xs-12 col-sm-6 col-lg-6 col-xl-6">
-                                <label  class="text-info">Graphic Card(GPU)</label><br>
-                                <div class="d-inline-flex">
-                                <input type="text" name="gpu" class="form-control">
-                                </div>
-</div>
-<div class="col-md-6 col-xs-12 col-sm-6 col-lg-6 col-xl-6">
-<label  class="text-info">Disk size<span id="red"> *</span></label><br>
-                                <div class="d-inline-flex">
-                                <input type="text" name="disk" class="form-control">
-                                <select name="type" class="form-control">
-                                <option value="GB">GB</option>
-                                <option value="TB">TB</option>
-                                <option value="MB">MB</option>
-                                </select></div>
-</div>
-                                </div>
+                                <label  class="text-info">Price<span id="red"> *</span></label><br>
+                                <input type="text" name="price"  class="form-control">
                             </div>
-                          
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-md-6 col-xs-12 col-sm-6 col-lg-6 col-xl-6">
-                                    <label  class="text-info">Ram size<span id="red"> *</span></label><br>
-                                <div class="d-inline-flex">
-                                <input type="text" name="ram" class="form-control">
-                                <select name="rtype" class="form-control">
-                                <option value="GB">GB</option>
-                                <option value="TB">TB</option>
-                                <option value="MB">MB</option>
-                                </select></div>
-                                    </div>
-                                    <div class="col-md-6 col-xs-12 col-sm-6 col-lg-6 col-xl-6">
-                                    <label class="text-info">Screen size<span id="red"> *</span></label><br>
-                                <div class="d-inline-flex">
-                                <input type="text" size="45" name="screen" placeholder="17" class="form-control"><span class="mt-2 mx-1">inch</span>
-                                    </div>
-                                </div>
-                            </div>
-</div>
-<div class="form-group">
-                                <label  class="text-info">Battery</label><br>
-                                <input type="text" name="battery"  class="form-control">
-                            </div>
-
-                            
-
                             <div class="form-group">
                                 <label  class="text-info">Year<span id="red"> *</span></label><br>
                                 <select name="year" class="form-control">
@@ -135,13 +82,16 @@
                                 </div>
                                 <div class="col-md-6 col-xs-12 col-sm-8 col-lg-8 col-xl-8 mt-2">
                                 <label class="text-info">Add another spec(if needed)</label><br>
-                                <input type="text" name="spec" id="spec" class="form-control" placeholder="ex Bluetooth:5.0 or PSU:750W">
+                                <input type="text" name="spec" id="spec" class="form-control" placeholder="ex Substance:plastic or Made in:China">
 </div>
                                 <div class="col-md-6 col-xs-12 col-sm-4 col-lg-4 col-xl-4 mt-2">
                               <button class="btn btn-primary" style="margin-top: 35px;" onclick="shtospec();return false;">Add spec</button>
 </div>
                             </div>
-                        
+                            <div class="form-group">
+                                <label  class="text-info">Description<span id="red">(max 2000 letters)</span></label><br>
+                                <textarea type="text" name="description"  class="form-control"></textarea>
+                            </div>
                             <div class="form-group">
                                <br>
                                 <input type="submit" name="submit" class="btn btn-info btn-md" value="Upload">
@@ -180,8 +130,12 @@ sp++;
 document.getElementById('other').style.display = "inline";
 document.getElementById('specs').style.display = "inline";
 document.getElementById('sp').value = sp;
+document.getElementById('spec').value = "";
+
 specs.appendChild(input);
 }
 </script>
+
+
 
 @endsection

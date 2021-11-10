@@ -25,12 +25,12 @@ class InstalledVersions
 private static $installed = array (
   'root' => 
   array (
-    'pretty_version' => '1.0.0+no-version-set',
-    'version' => '1.0.0.0',
+    'pretty_version' => 'dev-master',
+    'version' => 'dev-master',
     'aliases' => 
     array (
     ),
-    'reference' => NULL,
+    'reference' => '752917ed9178bbbf6b027b45a03b48aa8c6361c2',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -44,6 +44,15 @@ private static $installed = array (
       ),
       'reference' => '9cb795bf30988e8c96dd3c40623c48a877bc6714',
     ),
+    'barryvdh/laravel-dompdf' => 
+    array (
+      'pretty_version' => 'v0.9.0',
+      'version' => '0.9.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '5b99e1f94157d74e450f4c97e8444fcaffa2144b',
+    ),
     'brick/math' => 
     array (
       'pretty_version' => '0.9.2',
@@ -52,6 +61,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'dff976c2f3487d42c1db75a3b180e2b9f0e72ce0',
+    ),
+    'calebporzio/livewire' => 
+    array (
+      'pretty_version' => 'v2.7.2',
+      'version' => '2.7.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '991e5bd8a48e450d23cd55336964f916e92a6464',
     ),
     'cordoval/hamcrest-php' => 
     array (
@@ -93,6 +111,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'e864bbf5904cb8f5bb334f99209b48018522f042',
+    ),
+    'dompdf/dompdf' => 
+    array (
+      'pretty_version' => 'v1.0.2',
+      'version' => '1.0.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '8768448244967a46d6e67b891d30878e0e15d25c',
     ),
     'dragonmantank/cron-expression' => 
     array (
@@ -464,12 +491,12 @@ private static $installed = array (
     ),
     'laravel/laravel' => 
     array (
-      'pretty_version' => '1.0.0+no-version-set',
-      'version' => '1.0.0.0',
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
       'aliases' => 
       array (
       ),
-      'reference' => NULL,
+      'reference' => '752917ed9178bbbf6b027b45a03b48aa8c6361c2',
     ),
     'laravel/sail' => 
     array (
@@ -527,12 +554,12 @@ private static $installed = array (
     ),
     'livewire/livewire' => 
     array (
-      'pretty_version' => 'v2.4.4',
-      'version' => '2.4.4.0',
+      'pretty_version' => 'v2.7.2',
+      'version' => '2.7.2.0',
       'aliases' => 
       array (
       ),
-      'reference' => '33101c83b75728651b9e668a4559f97def7c9138',
+      'reference' => '991e5bd8a48e450d23cd55336964f916e92a6464',
     ),
     'mockery/mockery' => 
     array (
@@ -608,6 +635,24 @@ private static $installed = array (
       ),
       'reference' => '06e2ebd25f2869e54a306dda991f7db58066f7f6',
     ),
+    'paypal/paypal-checkout-sdk' => 
+    array (
+      'pretty_version' => '1.0.2',
+      'version' => '1.0.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '19992ce7051ff9e47e643f28abb8cc1b3e5f1812',
+    ),
+    'paypal/paypalhttp' => 
+    array (
+      'pretty_version' => '1.0.1',
+      'version' => '1.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '7b09c89c80828e842c79230e7f156b61fbb68d25',
+    ),
     'phar-io/manifest' => 
     array (
       'pretty_version' => '2.0.1',
@@ -625,6 +670,24 @@ private static $installed = array (
       array (
       ),
       'reference' => 'bae7c545bef187884426f042434e561ab1ddb182',
+    ),
+    'phenx/php-font-lib' => 
+    array (
+      'pretty_version' => '0.5.2',
+      'version' => '0.5.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'ca6ad461f032145fff5971b5985e5af9e7fa88d8',
+    ),
+    'phenx/php-svg-lib' => 
+    array (
+      'pretty_version' => '0.3.4',
+      'version' => '0.3.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'f627771eb854aa7f45f80add0f23c6c4d67ea0f2',
     ),
     'phpdocumentor/reflection-common' => 
     array (
@@ -858,6 +921,15 @@ private static $installed = array (
         0 => '4.1.1',
       ),
     ),
+    'sabberworm/php-css-parser' => 
+    array (
+      'pretty_version' => '8.3.1',
+      'version' => '8.3.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'd217848e1396ef962fb1997cf3e2421acba7f796',
+    ),
     'sebastian/cli-parser' => 
     array (
       'pretty_version' => '1.0.1',
@@ -1001,6 +1073,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'c6c1022351a901512170118436c764e473f6de8c',
+    ),
+    'stripe/stripe-php' => 
+    array (
+      'pretty_version' => 'v7.100.0',
+      'version' => '7.100.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '3dfc3dcd5d967a14d2852f34e544188af5f9b799',
     ),
     'swiftmailer/swiftmailer' => 
     array (

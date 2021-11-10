@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.shpalljet')
 
 @section('content')
 <head>
 </head>
 <div class="container">
 <div id="hov">
-<div class="text-center">
+<div class="text-center mt-2">
 @if(\Session::has('porosi'))
 <div class="alert alert-success alert-dismissible fade show" role="alert">
   {!! \Session::get('porosi') !!}
@@ -32,7 +32,7 @@
 <h5 class="h5">{{$prod->sasia}}</h4>
 </div>
 <div class="text-center col-12 col-xs-12 col-md-3 col-sm-3 col-lg-3 col-xl-3" style="margin-top: 115px;">
-<a style="text-decoration:none;" href="{{route('deleteprod',$prod->id)}}"><h4 class="h4">Delete</h4></a>
+<a style="text-decoration:none;" href="{{route('deleteprod',$prod->id)}}"><h5><i class="far fa-window-close"></i></h5></a>
 </div>
 @endif
 @if(!Auth::guard('perdoruesit')->check())
@@ -48,7 +48,7 @@
 <h5 class="h5">{{$prod['sasia']}}</h4>
 </div>
 <div class="text-center col-12 col-xs-12 col-md-3 col-sm-3 col-lg-3 col-xl-3" style="margin-top: 115px;">
-<a style="text-decoration:none;" href="{{route('deleteprod',$prod['id'])}}"><h4 class="h4"><i class="far fa-window-close"></i></h4></a>
+<a style="text-decoration:none;" href="{{route('deleteprod',$prod['id'])}}"><h5><i class="far fa-window-close"></i></h5></a>
 </div>
 @endif
 @endforeach
@@ -61,7 +61,9 @@
 @endif
 @endif
 @if($cart == null || $cart->items == null)
-<h3 class="h3 text-primary mt-2">Cart is empty!</h3>
+<div id="rowing">
+<h3 class="h3 text-primary pt-2 pb-2">Cart is empty!</h3>
+</div>
 @endif
 
 
@@ -69,5 +71,6 @@
 
 </div>
 </div>
+
 @endsection
 

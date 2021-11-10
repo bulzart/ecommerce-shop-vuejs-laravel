@@ -1,46 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="csrf-token" content="{{ csrf_token() }}">
-<style type="text/css">
 
-#meshume:hover{
-  opacity: 0.96;
-}
-img.logobaki{
-max-width: 128px;
-}
-#modalii{
-  background: rgb(255,255,255);
-}
-#toalign img{
-  vertical-align: middle;
-}
-#shiko{
-background: rgba(182,182,182,0.6);
-}
-.parallax{
-  background-image: url("images/sgcdesignco-81Dfucag9OY-unsplash.jpg");
-  min-height: 600px; 
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-</style>
-<meta charset="UTF-8">
-  <meta name="description" content="Blog">
-  <meta name="keywords" content="HTML, CSS, JavaScript, PHP, Laravel">
-  <meta name="author" content="Bulzart Aliu">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
-<title>{{config('app.name')}}</title>
-<link rel="icon" href="images/logo.ico">
-</head>
-<body>
+@extends('layouts.shpalljet')
+@section('login')
+
+@endsection
+@section('content')
   <div class="container">
 <br>
 <div class="container">
@@ -87,7 +50,7 @@ background: rgba(182,182,182,0.6);
 <td>@if($order->perdoruesi_id != null)<p>{{$order->perdoruesi->name}}</p>@endif</td>
 <td><p>{{$order->emri}}</p></td>
 <td><p>{{$order->shteti}}</p><td>
-<td><p>{{$order->adresa}}</p></td>
+<td><p>{{$order->adresa}} Zip: {{$order->zip}}</p></td>
 <td><p>{{$order->tel}}</p></td>
 <td><p>{{$order->created_at}}</p></td>
 <td>
@@ -123,6 +86,5 @@ background: rgba(182,182,182,0.6);
 
 @endif
 <br>
-</body>
-</html>
+@endsection
 

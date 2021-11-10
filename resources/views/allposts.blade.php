@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.shpalljet')
 @section('login')
 
 @endsection
@@ -22,20 +22,38 @@
 </div>
 @endif
 
-<div class="row mt-2">
+
+
   @if(Auth::guard('perdoruesit')->user()->role == "admin")
+  <div class="page-content mt-2">
+    <div class="products mb-3">
+         <div class="row d-flex justify-content-center text-center">
 @foreach($shpalljet as $shpallje)
-<div class="col-12 col-md-6 col-sm-6 col-xs-12 col-lg-4 col-xl-4 mb-4 text-center">
-  <img src="{{$shpallje->path}}" class="card-img-top">
-  <div class="card-body">
-    <h5 class="card-title">{{$shpallje->emri}}</h5>
-    <button type="button" class="btn" style="margin-bottom: 3px;" id="shiko" data-bs-toggle="modal" data-bs-target="#{{$shpallje->slug}}">Edit</button>
+<div class="col-12 col-md-6 col-sm-6 col-xs-12 col-lg-4 col-xl-4 mb-4 mr-2 text-center">
+<div class="product product-7 text-center">
+<figure class="product-media">
+                                            
+                                            <a href="{{route('shiko',$shpallje->slug)}}">
+                                                <img src="{{$shpallje->path}}" alt="Product image" class="product-image" id="productimage2">
+                                            </a>
+                                        </figure>
+                                        <div class="product-body">
+                                               <!-- End .product-cat -->
+                                                <h3 class="product-title">{{$shpallje->emri}}</h3><!-- End .product-title -->
+                                             
+                                               
+
+                                                <button type="button" class="btn" style="margin-bottom: 3px;" id="shiko" data-bs-toggle="modal" data-bs-target="#{{$shpallje->slug}}">Edit</button>
     <a href="{{route('fshije',$shpallje->id)}}"><button style="margin-bottom: 3px;" type="button" class="btn" id="shiko">Delete</button></a>
     <a href="{{route('shiko',$shpallje)}}"><button type="button" class="btn" id="shiko">View post</button></a>
     
-</div>
+
+                                            </div><!-- End .product-body -->
+                                        </div>
+
     </div>
-    
+
+
 <!-- Modal -->
 <div class="modal fade" id="{{$shpallje->slug}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -66,18 +84,6 @@
       <input type="text" name="cmimi" class="form-control text-center" value="{{(float) $shpallje->cmimi}}">
       <p>Color</p>
       <input type="text" name="ngjyra" class="form-control text-center" value="{{$shpallje->ngjyra}}">
-      <p>Screen size</p>
-      <input type="text" name="size" class="form-control text-center" value="{{$shpallje->size}}">
-      <p>CPU</p>
-      <input type="text" name="cpu" class="form-control text-center" value="{{$shpallje->cpu}}">
-      <p>GPU</p>
-      <input type="text" name="gpu" class="form-control text-center" value="{{$shpallje->gpu}}">
-      <p>Disk size</p>
-      <input type="text" name="disk" class="form-control text-center" value="{{$shpallje->disk}}">
-      <p>Battery</p>
-      <input type="text" name="battery" class="form-control text-center" value="{{$shpallje->battery}}">
-      <p>RAM</p>
-      <input type="text" name="ram" class="form-control text-center" value="{{$shpallje->ram}}">
       <p>Year</p>
       <input type="text" name="viti" class="form-control text-center" value="{{$shpallje->viti}}">
       <p>Model</p>
@@ -105,6 +111,9 @@
 
   </div>
   @endforeach
+</div>
+</div>
+
   @else
   @foreach($shpalljet as $shpallje)
   @if($shpallje->perdoruesi_id == Auth::guard('perdoruesit')->user()->id)

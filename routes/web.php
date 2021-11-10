@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Middleware\isadmin;
 use App\Http\Middleware\isadministrator;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StripeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+route::get('randomcategories',[UserController::class,'randomcategories']);
+route::get('subcategories',[UserController::class,'subcategories']);
+route::post('delsub',[UserController::class,'delsub'])->name('delsub');
+route::post('insertsub',[UserController::class,'insertsub'])->name('insertsub');
+route::get('category',[UserController::class,'category'])->name('category');
 route::get('myprofilep',[UserController::class,"myprofilep"])->name('myprofilep');
 route::post('updateprofile',[UserController::class,'updateprofile'])->name('updateprofile');
 route::get('myprofile',[UserController::class,"myprofile"])->name('myprofile');
@@ -24,7 +30,7 @@ route::post('signupp',[UserController::class,"signupp"])->name('signupp');
 route::get('signup',[UserController::class,"signup"])->name('signup');
 route::get('curr',[UserController::class,'curr']);
 route::get('minus/{id}',[UserController::class,'minus'])->name('minus');
-route::post('changecurr',[UserController::class,'changecurr'])->name('changecurr')->middleware(isadministrator::class);
+route::post('changecurr',[UserController::class,'changecurrs'])->name('changecurr')->middleware(isadministrator::class);
 route::post('deladmin',[UserController::class,'deladmin'])->name('deladmin')->middleware(isadministrator::class);
 route::get('hot',[UserController::class,"hotnow"]);
 route::get('models',[UserController::class,"returnmodels"]);
@@ -35,13 +41,13 @@ route::get('add/{id}',[UserController::class,"shto"])->name('shto');
 route::get('searchproduct',[UserController::class,'searchp'])->name('searchp');
 route::post('deletecategory',[UserController::class,'deletep'])->name('deletep')->middleware(isadministrator::class);
 route::post('insertcategory',[UserController::class,'insertp'])->name('insertp')->middleware(isadministrator::class);
-route::get('insert',[UserController::class,'insert'])->name('insert')->middleware(isadministrator::class);
+route::get('settings',[UserController::class,'insert'])->name('insert')->middleware(isadministrator::class);
 route::get('search',[UserController::class,'search'])->name('search');
 route::post('lisdonetorders',[UserController::class,"listdoneorders"])->name('listdoneorders')->middleware(isadministrator::class);
 route::post('listorders',[UserController::class,"listorders"])->name('listorders')->middleware(isadministrator::class);
-route::get('admin-login',[UserController::class,'loging'])->name('loging');
+route::get('login',[UserController::class,'loging'])->name('loging');
 //Route::get('/',[UserController::class,"home"])->name('home');
-route::get('addadmin',[UserController::class,'addadmin'])->name('addadmin')->middleware(isadministrator::class);
+route::get('admins',[UserController::class,'addadmin'])->name('addadmin')->middleware(isadministrator::class);
 route::get('delete/{id}',[UserController::class,'fshije'])->name('fshije')->middleware(isadmin::class);
 Route::get('allposts',[UserController::class,'allposts'])->name('allposts')->middleware(isadmin::class);
 Route::get('delorder/{id}',[UserController::class,'delorder'])->name('delorder')->middleware(isadministrator::class);
@@ -50,7 +56,7 @@ Route::get('doneorders',[UserController::class,'doneorders'])->name('doneorders'
 Route::get('done/{id}',[UserController::class,'perfunduar'])->name('done')->middleware(isadministrator::class);
 Route::get('orders',[UserController::class,'orders'])->name('orders')->middleware(isadministrator::class);
 Route::get('upload',[UserController::class,"uploadg"])->name('uploadg')->middleware(isadmin::class);
-route::get('order',[UserController::class,"porosit"])->name('porosit');
+route::post('order',[UserController::class,"porosit"])->name('porosit');
 route::get('checkout',[UserController::class,"checkout"])->name('checkout');
 route::get('del',[UserController::class,"del"])->name('del');
 route::get('send',[UserController::class,"send"])->name('send');
@@ -63,8 +69,9 @@ route::post('uploaded',[UserController::class,"uploadp"])->name('uploadp')->midd
 route::get('logout',[UserController::class,"logout"])->name('logout');
 route::get('returnhash',[UserController::class,'returnhash']);
 route::get('{upload}',[UserController::class,'shiko'])->name('shiko');
-route::post('login',[UserController::class,'login'])->name('login');
+route::post('signin',[UserController::class,'login'])->name('login');
 route::post('edit/{id}',[UserController::class,"ndrysho"])->name('ndrysho');
+
 
 
 

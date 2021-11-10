@@ -17,5 +17,6 @@ class carModels extends Model
     public function related(){
         return $this->hasMany(Upload::class)->orderBy('count','desc')->take(4);
     }
+
 }
 ?>
